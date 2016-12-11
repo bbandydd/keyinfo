@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Key Info</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <style>
+        #app {
+            text-align: center;
+        }
+
+        .keycode {
+            font-size: 10em;
+            margin: 0 auto;
+            display: inline-block;
+        }
+
+        .key {
+            display: inline-block;
+            padding: 0.5em 2em;
+            background-color: #000;
+            color: #fff;
+            font-size: 3em;
+            border-radius: 0.3em;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="keycode">
+            {{keycode}}
+        </div>
+        <br />
+        <div class="key">
+            {{key}}
+        </div>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                keycode: '',
+                key: 'Enter Keys on Keyboard.'
+            },
+            created: function() {
+                var that = this;
+                window.addEventListener('keyup', function(e) {
+                    that.keycode = e.keyCode;
+                    that.key = e.key == ' ' ? 'Space' : e.key;                 
+                })
+            }
+        })
+    </script>
+</body>
+</html>
